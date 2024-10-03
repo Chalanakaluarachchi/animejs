@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Logo</a>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+    <section>
+        <div class="content">
+            <h2>Welcome to our website!<b>Anime.js</b></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel libero at velit ultrices pellentesque. Sed vel orci a velit facilisis rutrum non eu lectus. Donec vel enim at felis scelerisque varius. Sed vel lectus at felis scelerisque varius.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+        <div class="container"></div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let container = document.querySelector('.container');
+        for (let i = 1; i <=100; i++){
+            let dot = document.createElement('div');
+            dot.classList.add('element');
+            container.appendChild(dot);
+        }
+
+        let dotAll = document.querySelectorAll('.element');
+        let animation = anime.timeline({
+            targets: dotAll,
+            easing: 'easeInOutExpo',
+            loop: true,
+            delay: anime.stagger(100,{grid:[10,10], from: 'center'})
+        })
+        animation
+        .add({
+            rotateZ: 180,
+            translateY: anime.stagger(-20,{grid:[10,10], from: 'center', axis:'y'}),
+            translateX: anime.stagger(-20,{grid:[10,10], from: 'center', axis:'x'}),
+            opacity: 1,
+        })
+        .add({
+            borderRadius: 50,
+        })
+        .add({
+            scale:0.2,
+            opacity: 0.2,
+        })
+        animation
+        .add({
+            rotateZ: 180,
+            translateY: anime.stagger(0,{grid:[10,10], from: 'center', axis:'y'}),
+            translateX: anime.stagger(0,{grid:[10,10], from: 'center', axis:'x'}),
+            opacity: 1,
+        })
+        .add({
+            scale:1,
+            borderRadius: 0,
+        })
+        .add({
+            rorateZ:-90,
+        })
+
+    </script>
+</body>
+</html>
